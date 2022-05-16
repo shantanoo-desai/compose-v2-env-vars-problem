@@ -1,4 +1,9 @@
 # Repo to reproduce the environment variable persistence bug 
+This repo provides a basic example for bug reproduction
+
+the problem lies
+- ~~docker compose v2.5.0~~
+- Grafana v8.4.0 container
 
 ## System Info
 
@@ -125,6 +130,15 @@ be the new password you adapted
 
 However the container still keeps persisting the old envrionment variables
 
+### Checking within the container
+
+```bash
+docker compose exec grafana /bin/bash
+```
+to login within the container and then use `env` command to check if the `GF_SECURITY_ADMIN_PASSWORD` is picked
+from docker compose. In this case it is picked up to the new password from `.env` however the container still
+only accepts the old password for login
+
 ## _Solution_/ _Hack_
 
 If you use
@@ -134,6 +148,7 @@ docker compose down --volumes
 ```
 
 where you purge the volumes and restart again, only then is the new env variable actually set!
+
 
 
 ## Report
