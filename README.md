@@ -134,3 +134,9 @@ docker compose down --volumes
 ```
 
 where you purge the volumes and restart again, only then is the new env variable actually set!
+
+
+## Report
+
+- [StackExchange Query](https://stackoverflow.com/questions/72256782/docker-compose-v2-does-not-pick-up-changes-from-env-file-even-after-updated-comp)
+I created
