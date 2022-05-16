@@ -1,0 +1,14 @@
+# Simple Grafana Service
+## VGRAFANA will be resolved via the .env file in root dir
+## This file will be "merged" with "docker-compose.base.yml"
+
+services:
+  grafana:
+    image: grafana/grafana-oss:${VGRAFANA}
+    container_name: test-grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+    security_opt:
+      - "no-new-privileges:true"

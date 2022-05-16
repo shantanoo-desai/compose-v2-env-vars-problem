@@ -1,0 +1,16 @@
+# Base Compose file
+## Consists only of networks. volumes, services
+## Services: should only have mounts like volumes or env_vars
+
+networks:
+  internal:
+
+services:
+  grafana:
+    env_file:
+      - ./conf/grafana/.env
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  grafana:
